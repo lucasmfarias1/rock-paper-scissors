@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+  <button id="game-button">Game on!</button>
+  <div>
+    <label>Player's score:</label><span id="player-score"></span><br>
+    <label>Computer's score:</label><span id="computer-score"></span>
+  </div>
+
+  <script>
+   let playerLabel = document.getElementById('player-score');
+   let computerLabel = document.getElementById('computer-score');
+   let gameButton = document.getElementById('game-button');
+
+   playerLabel.innerHTML = 0;
+   computerLabel.innerHTML = 0;
+   gameButton.onclick = game;
+
+   function computerPlay() {
+     let thePlay = Math.floor(Math.random() * 3);
+     if (thePlay == 0) {
+       return "rock";
+     } else if (thePlay == 1) {
+       return "paper";
+     } else {
+       return "scissors";
+     }
+   }
+
+   function playRound(playerSelection, computerSelection) {
+     playerSelection = playerSelection.toLowerCase();
+
+     if (playerSelection == computerSelection) {
+       return 'tie';
+     }
+
+     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
+         (playerSelection == 'paper' && computerSelection == 'rock') ||
+         (playerSelection == 'scissors' && computerSelection == 'paper')) {
+       return 'victory';
+     } else {
+       return 'defeat';
+     }
+   }
+
+   function game() {
+     console.log("Game on!")
+
+     let playerSelection;
+     let computerSelection;
+     let playerScore = 0;
+     let computerScore = 0;
+     let roundResult;
+
+     for (var i = 0; i < 5; i++) {
+       playerSelection = prompt("Rock, paper or scissors?");
+       computerSelection = computerPlay();
+       roundResult = playRound(playerSelection, computerSelection);
+
+       console.log("You chose " + playerSelection + " and the computer chose "
+                   + computerSelection + ".");
+       window.alert("You chose " + playerSelection + " and the computer chose "
+                   + computerSelection + ".");
+
+       if (roundResult == 'victory') {
+         playerScore++;
+         console.log("You won this round!");
+         window.alert("You won this round!");
+       } else if (roundResult == 'defeat') {
+         computerScore++;
+         console.log("You lost this round!");
+         window.alert("You lost this round!");
+       } else {
+         console.log("You tied this round!");
+         window.alert("You tied this round!");
+       }
+     }
+     console.log("You scored " + playerScore + " times and the computer scored "
+                 + computerScore + " times.");
+     window.alert("You scored " + playerScore + " times and the computer scored "
+                 + computerScore + " times.");
+     if (playerScore > computerScore) {
+       console.log("You won!");
+       window.alert("You won!");
+       playerLabel.innerHTML++;
+     } else if (playerScore < computerScore) {
+       console.log("You lost!");
+       window.alert("You lost!");
+       computerLabel.innerHTML++;
+     } else {
+       console.log("You tied!");
+       window.alert("You tied!");
+     }
+   }
+  </script>
+
+</body>
+</html>
