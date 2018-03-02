@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+}
+
+body {
+  height: 100%;
+}
+
+main {
+  width: 200px;
+  text-align: center;
+  margin: 100px auto;
+}
