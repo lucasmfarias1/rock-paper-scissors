@@ -1,13 +1,42 @@
 * {
   margin: 0;
+  color: white;
 }
 
 body {
   height: 100%;
+  background-color: grey;
 }
 
 main {
-  width: 200px;
+  width: 100%;
   text-align: center;
-  margin: 100px auto;
+  margin: auto;
+}
+
+button {
+  background-color: black;
+  display: inline-block;
+  width: 100px;
+  border: none;
+  height: 50px;
+}
+
+div {
+  box-shadow: 0 3px 3px #222;
+}
+
+button:hover {
+  color: black;
+  background-color: white;
+}
+
+#controls-div {
+  background-color: black;
+  margin: 25px 0;
+}
+
+#results-div {
+  padding: 20px 0;
+  background-color: black;
 }
